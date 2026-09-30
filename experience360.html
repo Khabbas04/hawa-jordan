@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="js/language-init.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Explore Jordan through immersive interactive 360-degree sensory scenes.">
+  <meta name="theme-color" content="#080a09">
+  <title>360° Sensory Experience — Hawa Jordan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/pages/experience360.css">
+</head>
+<body class="page-360">
+  <a class="skip-link" href="#viewer-content">Skip to controls</a>
+  <main class="viewer-360" id="viewer-content">
+    <canvas id="panorama-canvas" aria-label="Interactive 360 degree scene. Drag to look around."></canvas>
+    <canvas id="atmosphere-canvas" aria-hidden="true"></canvas>
+    <div class="panorama-fallback" id="panorama-fallback" aria-hidden="true"></div>
+    <div class="viewer-shade" aria-hidden="true"></div>
+
+    <header class="viewer-header">
+      <a class="viewer-brand" href="/" aria-label="Hawa Jordan home"><img src="assets/logo/hawa-jordan-logo.png" alt="Hawa Jordan"></a>
+      <div class="viewer-heading"><p id="scene-kicker">DESERT &amp; SILENCE</p><h1 id="scene-title">Wadi Rum Afterglow</h1><span id="scene-copy">Turn slowly. Let the desert open around you.</span><em>AI visual simulation</em></div>
+      <div class="viewer-header-actions">
+        <button class="viewer-language" type="button" data-language-toggle data-i18n-ignore><span data-language-code>AR</span><b data-language-label>العربية</b></button>
+        <a class="viewer-exit" id="viewer-exit" href="explore?category=desert"><span>×</span><b>Exit 360</b></a>
+      </div>
+    </header>
+
+    <div class="compass" aria-hidden="true"><span>W</span><span>N</span><span>E</span><span>S</span><i id="compass-needle"></i></div>
+    <div class="hotspot-layer" id="hotspot-layer"></div>
+
+    <nav class="tour-route" id="tour-route" aria-label="Wadi Mujib route" hidden>
+      <button class="tour-route__arrow" id="route-previous" type="button" aria-label="Previous stop">←</button>
+      <div class="tour-route__place">
+        <span id="route-step">STOP 1 OF 4</span>
+        <strong id="route-title">Trail Entrance</strong>
+        <small id="route-distance">Start here</small>
+      </div>
+      <div class="tour-route__dots" id="route-dots" aria-label="Tour stops"></div>
+      <button class="tour-route__arrow tour-route__arrow--next" id="route-next" type="button" aria-label="Next stop">→</button>
+    </nav>
+
+    <div class="node-transition" id="node-transition" hidden aria-live="polite">
+      <span>WALKING THE SIQ</span><strong id="node-transition-title">Moving upstream…</strong><i></i>
+    </div>
+
+    <aside class="hotspot-card" id="hotspot-card" hidden>
+      <button id="close-hotspot" type="button" aria-label="Close information">×</button>
+      <p id="hotspot-kicker">LOOK CLOSER</p><h2 id="hotspot-title"></h2><p id="hotspot-copy"></p><a id="hotspot-link" href="#">Explore this place →</a>
+      <div class="hotspot-actions"><button id="ask-hotspot" type="button">Ask Hawa</button><button id="add-hotspot-trip" type="button">＋ Add to trip</button></div>
+    </aside>
+
+    <nav class="viewer-tools" aria-label="360 viewer tools">
+      <button id="sound-toggle" type="button" aria-pressed="false"><span>◖</span><b>Sound</b></button>
+      <button id="guided-tour-toggle" type="button" aria-pressed="false"><span>◎</span><b>Guided tour</b></button>
+      <button id="ai-guide-toggle" type="button" aria-expanded="false" aria-controls="ai-guide-panel"><span>✦</span><b>Ask Hawa</b></button>
+      <button id="more-toggle" type="button" aria-expanded="false" aria-controls="viewer-more-panel"><span>•••</span><b>More</b></button>
+      <button id="fullscreen-view" type="button"><span>⛶</span><b>Fullscreen</b></button>
+    </nav>
+
+    <div class="viewer-hint" id="viewer-hint"><span>↔</span><b>Drag to look around</b><small>Scroll or pinch to zoom</small></div>
+
+    <aside class="viewer-more-panel" id="viewer-more-panel" hidden>
+      <header><div><p>VIEW OPTIONS</p><h2>Explore your way</h2></div><button id="close-more" type="button" aria-label="Close view options">×</button></header>
+      <div class="more-actions">
+        <button id="motion-toggle" type="button" aria-pressed="false"><span>◉</span><b>Move phone</b><small>Look around by moving your device</small></button>
+        <button id="reset-view" type="button"><span>⌖</span><b>Reset view</b><small>Return to the best starting angle</small></button>
+      </div>
+      <p class="scene-switcher-label">CHOOSE AN ENVIRONMENT</p>
+      <nav class="scene-switcher" id="scene-switcher" aria-label="Choose a sensory environment"></nav>
+    </aside>
+
+    <section class="guided-tour-card" id="guided-tour-card" hidden aria-live="polite">
+      <header><span id="tour-step">1 / 3</span><button id="close-guided-tour" type="button" aria-label="End guided tour">×</button></header>
+      <p>GUIDED SENSORY TOUR</p><h2 id="tour-title">Welcome</h2>
+      <div class="tour-progress"><i id="tour-progress-bar"></i></div>
+      <div class="tour-actions"><button id="tour-previous" type="button" aria-label="Previous stop">←</button><button id="tour-narration" type="button" aria-pressed="false">Listen</button><button id="tour-next" type="button">Next →</button></div>
+    </section>
+
+    <aside class="ai-guide-panel" id="ai-guide-panel" hidden aria-labelledby="ai-guide-title">
+      <header><div><p>CONTEXT-AWARE GUIDE</p><h2 id="ai-guide-title">Ask Hawa</h2></div><div><button id="ai-language" type="button" aria-label="Switch guide language">AR</button><button id="ai-voice-output" type="button" aria-label="Read guide answers aloud" aria-pressed="false">◖</button><button id="close-ai-guide" type="button" aria-label="Close AI guide">×</button></div></header>
+      <div class="ai-context"><span>✦</span><p><b id="ai-context-title">Looking around</b><small id="ai-context-copy">I understand this scene and the place in front of you.</small></p></div>
+      <div class="ai-messages" id="ai-messages" aria-live="polite"></div>
+      <div class="ai-suggestions" id="ai-suggestions"><button type="button" data-guide-question="What am I looking at?">What am I looking at?</button><button type="button" data-guide-question="What is the best time to visit?">Best time to visit</button><button type="button" data-guide-question="What can I do nearby right now?">What can I do nearby?</button></div>
+      <div class="ai-action-row" id="ai-action-row" hidden></div>
+      <form class="ai-form" id="ai-guide-form"><button id="ai-voice-input" type="button" aria-label="Ask with your voice">●</button><label><span class="sr-only">Ask Hawa</span><input id="ai-question" type="text" maxlength="280" autocomplete="off" placeholder="Ask about this place…"></label><button id="ai-send" type="submit" aria-label="Send question">↑</button></form>
+      <p class="ai-disclaimer" id="ai-disclaimer">Uses curated Jordan content. Live details are checked when available.</p>
+    </aside>
+
+    <section class="viewer-welcome" id="viewer-welcome" aria-labelledby="viewer-welcome-title">
+      <div class="welcome-card"><p>IMMERSIVE JORDAN</p><h2 id="viewer-welcome-title">How would you like to explore?</h2><span>Move freely, or let Hawa guide you through the highlights.</span><div><button type="button" data-view-mode="guided"><b>◎</b><strong>Start guided tour</strong><small>90 seconds · narrated</small></button><button type="button" data-view-mode="free"><b>↔</b><strong>Explore freely</strong><small>Drag, look and discover</small></button><button id="welcome-motion" type="button" data-view-mode="motion" hidden><b>◉</b><strong>Move your phone</strong><small>Look around naturally</small></button></div></div>
+    </section>
+
+    <div class="viewer-status"><span class="status-dot"></span><b id="render-status">WebGL sphere · High detail</b><small id="view-angle">0° · 75° FOV</small></div>
+
+    <div class="viewer-loader" id="viewer-loader" aria-live="polite"><img src="assets/logo/hawa-jordan-logo.png" alt=""><span><i id="loader-progress"></i></span><p id="loader-label">Preparing the panorama…</p></div>
+    <p class="sr-only" id="viewer-live" aria-live="polite"></p>
+  </main>
+  <script type="module" src="js/experience360.js"></script>
+</body>
+</html>

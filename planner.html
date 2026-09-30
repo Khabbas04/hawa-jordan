@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="js/language-init.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Build a smart, personalized Jordan itinerary with Hawa Jordan.">
+  <meta name="theme-color" content="#17100c">
+  <title>Plan Your Trip — Hawa Jordan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/planner.css">
+</head>
+<body class="page-planner" data-page="planner">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header id="site-header" class="site-header" aria-label="Primary navigation"></header>
+
+  <main id="main-content" class="planner-main">
+    <div class="planner-backdrop" id="planner-backdrop" aria-hidden="true"></div>
+    <div class="planner-vignette" aria-hidden="true"></div>
+
+    <section class="planner-heading" aria-labelledby="planner-title">
+      <h1 id="planner-title">Plan Your Trip</h1>
+      <p>Turn inspiration into your perfect journey</p>
+      <div class="planner-heading-bar">
+        <div class="view-toggle" role="group" aria-label="Planner view">
+          <button class="is-active" type="button" data-view="map" aria-pressed="true">Map</button>
+          <button type="button" data-view="list" aria-pressed="false">List</button>
+        </div>
+        <nav class="region-filter-bar planner-glass" id="region-filter-bar" aria-label="Jordan regions filter">
+          <button type="button" class="region-chip is-active" data-region="all">
+            <span class="region-chip__dot"></span>
+            <span class="region-chip__text">All Regions</span>
+          </button>
+          <button type="button" class="region-chip region-chip--north" data-region="north">
+            <span class="region-chip__dot"></span>
+            <span class="region-chip__text">North</span>
+          </button>
+          <button type="button" class="region-chip region-chip--central" data-region="central">
+            <span class="region-chip__dot"></span>
+            <span class="region-chip__text">Central</span>
+          </button>
+          <button type="button" class="region-chip region-chip--south" data-region="south">
+            <span class="region-chip__dot"></span>
+            <span class="region-chip__text">South</span>
+          </button>
+        </nav>
+      </div>
+    </section>
+
+    <aside class="trip-panel planner-glass" id="trip-panel" aria-labelledby="trip-heading">
+      <button class="panel-collapse-btn" id="toggle-trip-panel" type="button" aria-label="Toggle itinerary panel" title="Hide/Show Panel">
+        <svg class="panel-collapse-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="trip-panel__heading">
+        <div>
+          <h2 id="trip-heading">My Trip</h2>
+          <p><span id="trip-days">5 Days</span><i>•</i><span id="trip-places">5 Places</span></p>
+        </div>
+        <button class="trip-build-button" id="open-settings" type="button">Build my trip</button>
+      </div>
+      <div class="itinerary-list" id="itinerary-list" aria-live="polite"></div>
+      <button class="add-place-button" id="open-place-picker" type="button"><span aria-hidden="true">＋</span>Add Place</button>
+    </aside>
+
+    <section class="route-stage" id="route-stage" aria-label="Interactive Jordan route map">
+      <p class="mobile-route-label">Route overview · tap a pin</p>
+      <svg class="route-svg" id="route-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="route-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#34d399" />
+            <stop offset="35%" stop-color="#38bdf8" />
+            <stop offset="65%" stop-color="#fbbf24" />
+            <stop offset="100%" stop-color="#f43f5e" />
+          </linearGradient>
+          <linearGradient id="user-route-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#38bdf8" />
+            <stop offset="100%" stop-color="#818cf8" />
+          </linearGradient>
+          <filter id="route-glow-filter" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="0.7" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <path id="route-path-glow" class="route-path-glow"></path>
+        <path id="route-path" class="route-path-main"></path>
+        <path id="user-connection-path" class="route-user-connection" stroke="url(#user-route-gradient)"></path>
+      </svg>
+      <div class="map-markers" id="map-markers"></div>
+      <div class="user-live-marker" id="user-live-marker" hidden>
+        <div class="user-live-radar"></div>
+        <div class="user-live-radar user-live-radar--delay"></div>
+        <div class="user-live-dot"></div>
+        <div class="user-live-card">
+          <span class="user-live-indicator"></span>
+          <div class="user-live-details">
+            <strong id="user-live-title">Your Location</strong>
+            <span id="user-live-status">Locating...</span>
+          </div>
+        </div>
+      </div>
+      <div class="map-controls planner-glass" aria-label="Map controls">
+        <button id="locate-user-btn" type="button" aria-label="Locate me on map" title="Locate me on map">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/><circle cx="12" cy="12" r="9" stroke-dasharray="2 3"/></svg>
+        </button>
+        <button id="auto-sort-route" type="button" aria-label="Auto-sort & untangle route" title="Auto-sort & untangle route">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m16 3 5 5-5 5"/><path d="M4 20v-7a4 4 0 0 1 4-4h13"/><path d="m8 21-5-5 5-5"/><path d="M20 4v7a4 4 0 0 1-4 4H3"/></svg>
+        </button>
+        <button id="optimize-route" type="button" aria-label="Optimize route" title="Optimize route">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 14-7-4 14-3-6-7-1Z"/></svg>
+        </button>
+        <button id="zoom-in" type="button" aria-label="Zoom in">＋</button>
+        <button id="zoom-out" type="button" aria-label="Zoom out">−</button>
+      </div>
+    </section>
+
+    <section class="planner-list-view planner-glass" id="planner-list-view" aria-label="Trip list view" hidden></section>
+
+    <aside class="place-detail planner-glass" id="place-detail" aria-live="polite">
+      <button class="detail-close" id="collapse-detail" type="button" aria-label="Collapse details">×</button>
+      <p id="detail-day">Day 2</p>
+      <h2 id="detail-title">Petra</h2>
+      <div class="detail-gallery" id="detail-gallery"></div>
+      <div class="detail-meta">
+        <span><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b id="detail-duration">6–8 Hours</b></span>
+        <span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><b id="detail-location">Ma'an, Jordan</b></span>
+      </div>
+      <p class="detail-description" id="detail-description"></p>
+      <button class="detail-action" id="detail-action" type="button"><span aria-hidden="true">⌖</span><span>Add to Itinerary</span></button>
+      <a class="detail-link" id="detail-link" href="destination?id=petra">View full destination →</a>
+    </aside>
+
+    <button class="trip-preview-card planner-glass" id="open-preview" type="button">
+      <img id="preview-image" src="assets/backgrounds/main.png" alt="">
+      <span><strong>Trip Preview</strong><small id="preview-summary">5 Days • 5 Places</small></span>
+      <b aria-hidden="true">→</b>
+    </button>
+  </main>
+
+  <dialog class="planner-dialog settings-dialog" id="settings-dialog">
+    <button class="dialog-x" type="button" data-close-dialog aria-label="Close">×</button>
+    <p class="dialog-kicker">Smart preferences</p>
+    <h2>Shape your journey</h2>
+    <form id="settings-form">
+      <label class="planner-field">Trip length
+        <span><input id="days-range" type="range" min="2" max="10" value="5"><output id="days-output">5 days</output></span>
+      </label>
+      <label class="planner-field">Travel pace
+        <select id="pace-select"><option value="relaxed">Relaxed</option><option value="balanced" selected>Balanced</option><option value="active">Active</option></select>
+      </label>
+      <fieldset class="interest-field"><legend>What do you want to feel?</legend>
+        <label><input type="checkbox" name="interest" value="history" checked><span>History</span></label>
+        <label><input type="checkbox" name="interest" value="nature" checked><span>Nature</span></label>
+        <label><input type="checkbox" name="interest" value="food"><span>Food</span></label>
+        <label><input type="checkbox" name="interest" value="adventure" checked><span>Adventure</span></label>
+        <label><input type="checkbox" name="interest" value="wellness"><span>Wellness</span></label>
+        <label><input type="checkbox" name="interest" value="local"><span>Local Life</span></label>
+      </fieldset>
+      <button class="planner-primary" type="submit">Generate Smart Route <span aria-hidden="true">→</span></button>
+    </form>
+  </dialog>
+
+  <dialog class="planner-dialog place-picker-dialog" id="place-picker-dialog">
+    <button class="dialog-x" type="button" data-close-dialog aria-label="Close">×</button>
+    <p class="dialog-kicker">Add a stop</p>
+    <h2>Where next?</h2>
+    <div class="place-search-wrap">
+      <svg class="place-search-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+      <input id="place-search" type="search" placeholder="Search by place or feeling…" autocomplete="off">
+      <button class="place-search-clear" id="place-search-clear" type="button" aria-label="Clear search" hidden>×</button>
+    </div>
+    <div class="place-filter-chips" id="place-filter-chips">
+      <button type="button" class="filter-chip is-active" data-chip="all">All</button>
+      <button type="button" class="filter-chip" data-chip="history">History</button>
+      <button type="button" class="filter-chip" data-chip="nature">Nature</button>
+      <button type="button" class="filter-chip" data-chip="adventure">Adventure</button>
+      <button type="button" class="filter-chip" data-chip="wellness">Wellness</button>
+      <button type="button" class="filter-chip" data-chip="food">Food</button>
+      <button type="button" class="filter-chip" data-chip="local">Local Life</button>
+    </div>
+    <div class="place-picker-grid" id="place-picker-grid"></div>
+    <div class="place-picker-footer">
+      <span class="picker-count" id="picker-count">5 stops in your trip</span>
+      <button type="button" class="planner-primary picker-done-btn" data-close-dialog>Done</button>
+    </div>
+  </dialog>
+
+  <dialog class="planner-dialog preview-dialog" id="preview-dialog">
+    <button class="dialog-x" type="button" data-close-dialog aria-label="Close">×</button>
+    <p class="dialog-kicker">Your Jordan journey</p>
+    <h2>Trip Preview</h2>
+    <div class="preview-stats" id="preview-stats"></div>
+    <div class="preview-timeline" id="preview-timeline"></div>
+    <div class="preview-actions">
+      <button class="planner-secondary" id="export-trip" type="button">Export itinerary</button>
+      <button class="planner-primary" id="save-trip" type="button">Save Trip</button>
+      <a class="planner-live-link" href="journey">Start Live Journey <span aria-hidden="true">→</span></a>
+    </div>
+  </dialog>
+
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="js/navigation.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/planner.js"></script>
+</body>
+</html>

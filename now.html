@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="js/language-init.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Real-time intelligent Jordan experiences based on your location, time, weather and budget.">
+  <meta name="theme-color" content="#27100b">
+  <title>What can I do NOW? — Hawa Jordan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/now.css">
+</head>
+<body class="page-now" data-page="now">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header id="site-header" class="site-header" aria-label="Primary navigation"></header>
+
+  <main id="main-content" class="now-main">
+    <div class="now-backdrop" aria-hidden="true"></div>
+    <div class="now-shade" aria-hidden="true"></div>
+
+    <section class="now-shell" aria-labelledby="now-title">
+      <header class="now-heading">
+        <a class="now-back" href="explore" aria-label="Back to Explore">←</a>
+        <div><p>LIVE IN JORDAN</p><h1 id="now-title">What can I do NOW?</h1><span>Real-time recommendations shaped around you</span></div>
+        <button class="tune-button" id="open-now-settings" type="button"><span>⚙</span> Tune my moment</button>
+      </header>
+
+      <section class="context-bar" aria-label="Current travel context">
+        <button class="context-cell context-location" id="detect-location" type="button">
+          <span class="context-icon">⌖</span><span><small>Near you</small><strong id="context-place">Wadi Rum</strong></span><b>⌄</b>
+        </button>
+        <div class="context-cell"><span class="context-icon">◴</span><span><small id="sunset-label">Until sunset</small><strong id="sunset-time">Calculating…</strong></span></div>
+        <div class="context-cell"><span class="weather-icon" id="weather-icon">☀</span><span><strong id="weather-temp">--°C</strong><small id="weather-label">Loading weather</small></span></div>
+      </section>
+
+      <section class="recommendation-section" aria-labelledby="recommendation-title">
+        <div class="recommendation-heading"><div><p id="recommendation-title">BEST FOR THIS MOMENT</p><span id="recommendation-reason">Based on daylight, weather and your pace</span></div><strong id="live-clock">--:--</strong></div>
+        <div class="experience-grid" id="experience-grid" aria-live="polite"></div>
+      </section>
+      <p class="weather-credit">Live weather by <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a> · Recommendations remain available offline with recent data.</p>
+    </section>
+  </main>
+
+  <dialog class="now-dialog" id="now-settings-dialog">
+    <button class="dialog-close" type="button" data-close-now aria-label="Close">×</button>
+    <p>SMART MOMENT</p><h2>What fits right now?</h2>
+    <form id="now-settings-form">
+      <label>Current area<select id="now-location"><option value="wadi-rum">Wadi Rum</option><option value="petra">Petra</option><option value="amman">Amman</option><option value="aqaba">Aqaba</option><option value="dead-sea">Dead Sea</option></select></label>
+      <div class="dialog-row"><label>Time available<select id="now-time"><option value="1.5">Up to 90 min</option><option value="3" selected>2–3 hours</option><option value="6">Half day</option><option value="10">Full day</option></select></label><label>Budget per person<select id="now-budget"><option value="15">Under 15 JOD</option><option value="35" selected>Up to 35 JOD</option><option value="70">Up to 70 JOD</option><option value="150">Flexible</option></select></label></div>
+      <fieldset><legend>Your mood</legend><label><input type="radio" name="now-mood" value="adventure" checked><span>Adventure</span></label><label><input type="radio" name="now-mood" value="culture"><span>Culture</span></label><label><input type="radio" name="now-mood" value="relax"><span>Slow down</span></label><label><input type="radio" name="now-mood" value="food"><span>Local food</span></label></fieldset>
+      <button class="now-primary" type="submit">Find my best three <span>→</span></button>
+    </form>
+  </dialog>
+
+  <dialog class="experience-dialog" id="experience-dialog">
+    <button class="dialog-close" type="button" data-close-now aria-label="Close">×</button>
+    <img id="experience-dialog-image" src="" alt="">
+    <div><p id="experience-dialog-kicker"></p><h2 id="experience-dialog-title"></h2><p id="experience-dialog-copy"></p><div id="experience-dialog-meta"></div><div class="experience-dialog-actions"><button id="add-now-trip" type="button">Add to my trip</button><a id="experience-directions" href="#" target="_blank" rel="noreferrer">Directions ↗</a></div></div>
+  </dialog>
+
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="js/navigation.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/now.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="js/language-init.js"></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Collect verified destination stamps and unlock achievements in your Hawa Jordan Passport."><meta name="theme-color" content="#1a0e08">
+  <title>My Passport — Hawa Jordan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css"><link rel="stylesheet" href="css/components.css"><link rel="stylesheet" href="css/pages/passport.css">
+</head>
+<body class="page-passport" data-page="passport">
+  <a class="skip-link" href="#main-content">Skip to content</a><header id="site-header" class="site-header"></header>
+  <main id="main-content" class="passport-main">
+    <div class="passport-backdrop" aria-hidden="true"></div><div class="passport-shade" aria-hidden="true"></div>
+    <header class="passport-heading"><a href="/" aria-label="Back home">←</a><div><p>YOUR JOURNEY</p><h1>My Passport</h1><span>Collect verified memories from Jordan's most iconic places</span></div></header>
+    <section class="passport-summary" aria-label="Passport progress"><div><strong><b id="visited-count">0</b> / <span id="total-count">12</span></strong><span>Destinations visited</span></div><i><b id="passport-progress-bar"></b></i><span class="summary-seal">HJ</span></section>
+    <section class="passport-page-copy" aria-label="Passport identity page"><img src="assets/logo/hawa-jordan-logo.png" alt="Hawa Jordan"><p>JORDAN</p><h2>A LAND OF<br>TIMELESS WONDERS</h2><span>COLLECT JOURNEYS<br>NOT THINGS</span><strong><b id="page-count">0</b> / 12</strong><small>DESTINATIONS</small></section>
+    <section class="stamp-collection" aria-labelledby="stamps-title"><div class="stamp-heading"><div><p>COLLECTION</p><h2 id="stamps-title">Destination Stamps</h2></div><button id="verify-nearest" type="button">⌖ Verify nearest visit</button></div><p class="stamp-help">Stamps start locked. Visit a place, then verify while you are within 5 km to collect it.</p><div class="stamp-grid" id="stamp-grid" aria-live="polite"></div></section>
+    <button class="achievements-button" id="open-achievements" type="button"><span>✦</span><b>Achievements</b><small id="badge-summary">0 badges unlocked</small></button>
+  </main>
+  <dialog class="passport-dialog" id="stamp-dialog"><button class="passport-dialog-x" data-close-passport type="button">×</button><div class="stamp-dialog-art" id="stamp-dialog-art"></div><p id="stamp-dialog-status"></p><h2 id="stamp-dialog-title"></h2><p id="stamp-dialog-copy"></p><div class="stamp-dialog-meta" id="stamp-dialog-meta"></div><button id="verify-this-stamp" type="button">Verify with my location</button></dialog>
+  <dialog class="passport-dialog achievements-dialog" id="achievements-dialog"><button class="passport-dialog-x" data-close-passport type="button">×</button><p>JOURNEY MILESTONES</p><h2>Your Achievements</h2><div class="badge-grid" id="badge-grid"></div></dialog>
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="js/navigation.js"></script><script type="module" src="js/auth.js"></script><script type="module" src="js/passport.js"></script>
+</body>
+</html>

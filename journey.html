@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="js/language-init.js"></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Live trip companion for your Hawa Jordan itinerary."><meta name="theme-color" content="#1b0d08">
+  <title>Live Journey — Hawa Jordan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css"><link rel="stylesheet" href="css/components.css"><link rel="stylesheet" href="css/pages/journey.css">
+</head>
+<body class="page-journey" data-page="journey">
+  <a class="skip-link" href="#main-content">Skip to content</a><header id="site-header" class="site-header"></header>
+  <main id="main-content" class="journey-main">
+    <div class="journey-backdrop" aria-hidden="true"></div><div class="journey-shade" aria-hidden="true"></div>
+    <aside class="journey-itinerary journey-glass">
+      <header><a href="planner" aria-label="Back to planner">←</a><div><p>LIVE ITINERARY</p><h1 id="journey-name">Fantasy Road</h1><span id="journey-subtitle">From Amman to Wadi Rum</span></div></header>
+      <div class="journey-progress"><span><i id="journey-progress-bar"></i></span><b id="journey-progress-label">1 of 5</b></div>
+      <div class="journey-stops" id="journey-stops"></div>
+      <button class="journey-reset" id="reset-journey" type="button">Restart journey</button>
+    </aside>
+
+    <div class="live-tools">
+      <button id="toggle-live" type="button"><span class="live-dot"></span><b>Use Live Location</b></button>
+      <button id="fullscreen-journey" type="button" aria-label="Fullscreen">⛶</button>
+    </div>
+
+    <aside class="next-stop-card journey-glass">
+      <header><span>⌖</span><div><small>Next Stop</small><h2 id="next-stop-title">Wadi Rum</h2></div><b id="next-stop-eta">2h 15min</b></header>
+      <div class="next-stop-visual"><img id="next-stop-image" src="assets/images/desert-wadi-rum.jpg" alt=""><button id="play-stop-preview" type="button" aria-label="Open this place in 360 degrees">360°</button><span id="preview-pulse"></span></div>
+      <div class="drive-stats"><div><span id="journey-weather-icon">☀</span><p><strong id="journey-temp">22°C</strong><small id="journey-weather">Clear</small></p></div><div><span>⌁</span><p><strong id="drive-time">2h 15min</strong><small id="drive-distance">120 km</small></p></div></div>
+      <a class="open-map" id="open-map" href="#" target="_blank" rel="noreferrer"><span>◇</span> Open Map <b>›</b></a>
+      <div class="journey-actions"><button id="previous-stop" type="button">← Previous</button><button id="arrive-stop" type="button">I arrived <span>✓</span></button></div>
+      <small class="journey-credit">Live weather by <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a></small>
+    </aside>
+
+    <div class="speed-indicator" aria-live="polite"><strong id="live-speed">--</strong><span>km/h</span></div>
+    <div class="journey-status" id="journey-status">Location is off · Stops and directions still work</div>
+  </main>
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="js/navigation.js"></script><script type="module" src="js/auth.js"></script><script type="module" src="js/journey.js"></script>
+</body>
+</html>

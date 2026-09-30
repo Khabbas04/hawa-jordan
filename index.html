@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="js/language-init.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Discover Jordan through immersive places, stories, and sensory journeys.">
+  <meta name="theme-color" content="#160d08">
+  <title>Hawa Jordan — Feel Jordan Differently</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+</head>
+<body class="page-home" data-page="home">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header id="site-header" class="site-header" aria-label="Primary navigation"></header>
+
+  <main id="main-content" class="home-page-content">
+    <section class="home-main" aria-label="Discover Jordan">
+      <div class="home-overlay" aria-hidden="true"></div>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span></span> Jordan beyond<br>the ordinary</p>
+        <h1 id="hero-title"><span>Feel</span><em>Jordan</em><span>Differently</span></h1>
+        <p class="hero-intro">Real places. Real stories. Real people.<br>A journey that stays with you.</p>
+
+        <form class="destination-search" id="destination-search" role="search" autocomplete="off">
+          <svg class="search-leading" aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+          <label class="sr-only" for="destination-query">Where do you want to go in Jordan?</label>
+          <input id="destination-query" name="q" type="text" placeholder="Search a place… (e.g. Petra, رم, Sea)" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-controls="search-results" aria-expanded="false">
+          <button class="search-clear-btn" id="search-clear-btn" type="button" aria-label="Clear search" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+          <button class="search-submit-btn" type="submit" aria-label="Search destinations">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+          </button>
+          <div class="search-results" id="search-results" role="listbox" aria-label="Destination suggestions"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="sensory-section" aria-labelledby="sensory-title">
+      <h2 id="sensory-title" class="sr-only">Explore Jordan by feeling</h2>
+      <div class="sensory-grid">
+        <a class="sensory-card sensory-card--desert is-active" href="explore?category=desert" aria-label="Explore Desert and Silence">
+          <span class="card-shade"></span>
+          <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 64 48"><path d="M4 41 21 14l10 14 8-10 21 23M12 41l12-15 8 11 8-8 13 12M20 14l5 4 6-7 8 7"/></svg></span>
+          <span class="card-title">Desert<br><i>&amp;</i> Silence</span>
+          <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span>
+        </a>
+
+        <a class="sensory-card sensory-card--water" href="explore?category=waters" aria-label="Explore Roaring Waters">
+          <span class="card-shade"></span>
+          <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 64 48"><path d="M4 13c7 0 7 5 14 5s7-5 14-5 7 5 14 5 7-5 14-5M4 25c7 0 7 5 14 5s7-5 14-5 7 5 14 5 7-5 14-5M8 37c6 0 6 4 12 4s6-4 12-4 6 4 12 4 6-4 12-4"/></svg></span>
+          <span class="card-title">Roaring<br>Waters</span>
+          <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span>
+        </a>
+
+        <a class="sensory-card sensory-card--history" href="explore?category=history" aria-label="Explore Echoes of History">
+          <span class="card-shade"></span>
+          <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 64 48"><path d="M13 42h38M18 38h28M20 16h24v22H20zM16 12h32L32 3 16 12ZM26 16v22m12-22v22"/></svg></span>
+          <span class="card-title">Echoes<br>of History</span>
+          <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span>
+        </a>
+
+        <a class="sensory-card sensory-card--nature" href="explore?category=nature" aria-label="Explore Green Landscapes">
+          <span class="card-shade"></span>
+          <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 64 48"><path d="M31 43V24m0 10c-12-3-17-11-15-24 10 2 16 8 15 18m1 5c12-4 17-12 15-25-10 2-16 9-15 20M20 31c-7 0-11-4-12-10 7-1 12 2 13 7m22 3c7-1 11-5 11-11-7 0-11 3-12 8"/></svg></span>
+          <span class="card-title">Green<br>Landscapes</span>
+          <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span>
+        </a>
+
+        <a class="sensory-card sensory-card--food" href="explore?category=food" aria-label="Explore Local Flavors">
+          <span class="card-shade"></span>
+          <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 64 48"><path d="M10 31h44M14 31c2 10 9 14 18 14s16-4 18-14M20 27a12 12 0 0 1 24 0M32 10v5m-6-8 2 5m10-5-2 5M16 17l-7-7m39 7 7-7"/></svg></span>
+          <span class="card-title">Local<br>Flavors</span>
+          <span class="card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span>
+        </a>
+      </div>
+    </section>
+
+      <aside class="visual-rail glass-panel" aria-label="Featured Jordan views">
+      <div class="rail-thumbnails">
+        <button class="rail-thumb is-active" type="button" aria-label="Petra" aria-current="true" data-scene="petra"><img src="assets/backgrounds/main.png" alt="Petra Treasury at sunset"></button>
+        <button class="rail-thumb" type="button" aria-label="Wadi Mujib" data-scene="waters"><img src="assets/panoramas/waters-wadi-mujib-360-preview-v3.jpg" alt="Wadi Mujib canyon waters"></button>
+        <button class="rail-thumb" type="button" aria-label="Wadi Rum" data-scene="desert"><img src="assets/images/desert-wadi-rum.jpg" alt="Wadi Rum desert at sunset"></button>
+        <button class="rail-thumb" type="button" aria-label="Ajloun" data-scene="nature"><img src="assets/images/nature-ajloun.jpg" alt="Green Ajloun highlands"></button>
+        <button class="rail-thumb" type="button" aria-label="Petra" data-scene="history"><img src="assets/panoramas/history-petra-360-preview-v3.jpg" alt="The Treasury at Petra"></button>
+      </div>
+      <div class="rail-scroll" aria-hidden="true"><span class="rail-dot rail-dot--top"></span><span class="rail-line"></span><span class="rail-dot rail-dot--bottom"></span></div>
+      <p>Scroll to explore</p>
+      </aside>
+    </section>
+
+    <section class="home-start shell" aria-labelledby="start-title">
+      <div class="home-start__heading">
+        <p class="eyebrow"><span></span>Start here</p>
+        <h2 id="start-title">What would you like to do?</h2>
+        <p>Choose one clear next step. You can change it anytime.</p>
+      </div>
+      <div class="home-start__choices">
+        <a href="explore">
+          <small>01</small><strong>Discover a place</strong><span>Browse Jordan by feeling →</span>
+        </a>
+        <a href="planner">
+          <small>02</small><strong>Build my trip</strong><span>Create a simple itinerary →</span>
+        </a>
+        <a href="now">
+          <small>03</small><strong>Find something nearby</strong><span>Get a suggestion for right now →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="home-discovery shell" aria-labelledby="discovery-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span>Start exploring</p>
+          <h2 id="discovery-title">Jordan, one feeling<br>at a time.</h2>
+        </div>
+        <p>Move from rose-red cities to open desert, cool canyons and tables filled with local warmth.</p>
+      </div>
+      <div class="discovery-grid">
+        <a class="discovery-card discovery-card--petra" href="destination?id=petra">
+          <span class="discovery-index">01</span>
+          <span class="discovery-copy"><small>History · Petra</small><strong>The Rose-Red City</strong><span>Discover Petra <b aria-hidden="true">→</b></span></span>
+        </a>
+        <a class="discovery-card discovery-card--rum" href="destination?id=wadi-rum">
+          <span class="discovery-index">02</span>
+          <span class="discovery-copy"><small>Desert · Wadi Rum</small><strong>Silence under the stars</strong><span>Enter the desert <b aria-hidden="true">→</b></span></span>
+        </a>
+        <a class="discovery-card discovery-card--mujib" href="destination?id=wadi-mujib">
+          <span class="discovery-index">03</span>
+          <span class="discovery-copy"><small>Adventure · Wadi Mujib</small><strong>Follow the water</strong><span>Explore the canyon <b aria-hidden="true">→</b></span></span>
+        </a>
+      </div>
+      <a class="text-link" href="explore">Explore every side of Jordan <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="home-journey" aria-labelledby="journey-title">
+      <div class="home-journey__image" aria-hidden="true"></div>
+      <div class="home-journey__content">
+        <p class="eyebrow"><span></span>Your journey, your way</p>
+        <h2 id="journey-title">Build a trip that<br><em>feels like you.</em></h2>
+        <p>Choose the places that call to you and shape a Jordan itinerary you can keep, change and revisit.</p>
+        <div class="home-journey__actions">
+          <a class="button button--gold" href="planner">Plan your trip <span aria-hidden="true">→</span></a>
+          <a class="button button--now" href="now">What can I do now? <span aria-hidden="true">⌖</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-connections shell" aria-label="Stories and travel passport">
+      <a class="connection-card connection-card--stories" href="stories">
+        <span class="connection-card__shade"></span>
+        <span class="connection-card__content"><small>Voices of Jordan</small><strong>Stories from <em>locals</em></strong><span>Meet the people <b aria-hidden="true">→</b></span></span>
+      </a>
+      <a class="connection-card connection-card--passport" href="passport">
+        <span class="connection-card__shade"></span>
+        <span class="connection-card__content"><small>Your memories</small><strong>Collect your <em>passport</em></strong><span>Open your passport <b aria-hidden="true">→</b></span></span>
+      </a>
+    </section>
+  </main>
+
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="js/navigation.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/home.js"></script>
+</body>
+</html>

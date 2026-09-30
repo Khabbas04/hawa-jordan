@@ -1,0 +1,45 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function ownsUser(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    match /destinations/{destinationId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /experiences/{experienceId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /stories/{storyId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /users/{userId} {
+      allow create: if ownsUser(userId);
+      allow read, update, delete: if ownsUser(userId);
+
+      match /trips/{tripId} {
+        allow read, write: if ownsUser(userId);
+      }
+
+      match /achievements/{achievementId} {
+        allow read, write: if ownsUser(userId);
+      }
+    }
+
+    match /trips/{tripId} {
+      allow create: if signedIn() && request.resource.data.userId == request.auth.uid;
+      allow read, update, delete: if signedIn() && resource.data.userId == request.auth.uid;
+    }
+  }
+}

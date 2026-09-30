@@ -1,0 +1,18 @@
+# Local secrets and environment overrides
+.env
+.env.*
+!.env.example
+functions/.secret.local
+functions/.env.local
+
+# Firebase and package tooling
+firebase-debug.log
+firebase-debug.*.log
+**/node_modules/
+
+# Local QA artifacts
+test-results/
+.qa*/
+.tools/
+.DS_Store
+Thumbs.db

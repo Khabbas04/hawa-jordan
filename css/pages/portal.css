@@ -1,0 +1,88 @@
+.portal-page { background:#120c08; }
+.portal-main { position:relative; min-height:max(100svh,min(56.25vw,941px)); overflow:hidden; isolation:isolate; }
+.portal-main--scroll { min-height:100svh; overflow-y:auto; }
+.portal-backdrop { position:fixed; z-index:-3; inset:0; background-position:center; background-size:cover; }
+.portal-backdrop--planner { background-image:url("../../assets/images/desert-wadi-rum.jpg"); }
+.portal-backdrop--stories { background-image:url("../../assets/images/food-jordanian-table.jpg"); }
+.portal-backdrop--passport { background-image:url("../../assets/images/history-jerash.jpg"); }
+.portal-backdrop--about { background-image:url("../../assets/backgrounds/main.png"); }
+.portal-vignette { position:fixed; z-index:-2; inset:0; background:linear-gradient(90deg,rgba(7,4,2,.9),rgba(7,4,2,.38) 54%,rgba(5,3,2,.55)),linear-gradient(0deg,rgba(5,3,2,.93),transparent 65%,rgba(3,2,2,.4)); }
+.portal-page .site-header { background:linear-gradient(rgba(6,4,3,.66),transparent); }
+.portal-page .nav-shell { border-color:rgba(255,255,255,.16); }
+.portal-heading { position:absolute; top:135px; left:5vw; }
+.portal-heading h1 { margin:14px 0 8px; font:500 clamp(3rem,4.5vw,4.8rem)/1 var(--serif); letter-spacing:-.045em; }
+.portal-heading h1 em { color:var(--sand-light); font-weight:500; }
+.portal-heading>p:last-child { margin:0; color:rgba(255,255,255,.63); font-size:.82rem; }
+
+/* Planner */
+.planner-workspace { position:absolute; left:5vw; right:5vw; top:270px; bottom:5vh; display:grid; grid-template-columns:minmax(300px,.85fr) minmax(390px,1.4fr) minmax(260px,.7fr); gap:18px; }
+.planner-workspace>.glass-panel { border-radius:15px; background:linear-gradient(145deg,rgba(255,255,255,.07),transparent),rgba(12,10,8,.75); }
+.itinerary-panel { padding:25px; overflow:hidden; display:flex; flex-direction:column; }
+.panel-heading { display:flex; justify-content:space-between; align-items:start; margin-bottom:18px; }
+.panel-heading span,.selected-panel>span { color:var(--sand-light); font-size:.58rem; letter-spacing:.15em; text-transform:uppercase; }
+.panel-heading h2 { margin:4px 0 0; font:500 1.5rem var(--serif); }
+.panel-heading strong { padding:7px 10px; border:1px solid var(--border); border-radius:18px; color:var(--cream-dim); font-size:.66rem; }
+.itinerary-list { flex:1; min-height:0; overflow-y:auto; display:grid; align-content:start; gap:8px; padding-right:4px; }
+.itinerary-item { display:grid; grid-template-columns:42px 1fr auto; align-items:center; gap:11px; padding:10px; border:1px solid transparent; border-radius:9px; background:rgba(255,255,255,.035); cursor:pointer; }
+.itinerary-item:hover,.itinerary-item.is-active { border-color:rgba(214,177,112,.37); background:rgba(194,139,70,.12); }
+.day-number { width:39px;height:39px;display:grid;place-items:center;border-radius:50%;background:#2a211b;color:var(--sand-light);font-size:.62rem; }
+.itinerary-item h3 { margin:0;font-size:.78rem;font-weight:500; }.itinerary-item p { margin:2px 0 0;color:var(--muted);font-size:.62rem; }
+.remove-stop { width:29px;height:29px;border-radius:50%;background:transparent;color:var(--muted);cursor:pointer; }.remove-stop:hover{background:rgba(190,91,66,.18);color:#e6a08c;}
+.itinerary-actions { display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:14px; }
+.itinerary-actions select,.itinerary-actions button { min-width:0;height:42px;border:1px solid var(--border);border-radius:7px;background:#17130f;color:var(--cream);padding:0 11px;font-size:.68rem; }
+.itinerary-actions button { background:var(--gold);color:#1a1008;font-weight:600;cursor:pointer; }
+.route-map { position:relative;overflow:hidden; }
+.route-map::before { content:"";position:absolute;inset:0;background:radial-gradient(circle at 55% 50%,rgba(192,137,71,.15),transparent 38%),linear-gradient(30deg,transparent 49.7%,rgba(255,255,255,.025) 50%,transparent 50.3%);background-size:auto,31px 31px; }
+.map-label { position:absolute;top:21px;left:24px;color:rgba(255,255,255,.42);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase; }
+.jordan-shape { position:absolute;left:50%;top:49%;width:190px;height:370px;transform:translate(-50%,-50%);border:1px solid rgba(218,181,116,.28);background:linear-gradient(145deg,rgba(191,132,62,.13),rgba(255,255,255,.02));clip-path:polygon(36% 0,72% 8%,64% 27%,85% 45%,70% 62%,76% 78%,48% 100%,22% 85%,29% 64%,13% 49%,34% 32%,25% 15%); }
+.route-line { position:absolute;left:50%;top:24%;bottom:20%;width:2px;background:linear-gradient(var(--gold-bright),rgba(218,177,108,.25));transform:translateX(-50%); }
+.map-points { position:absolute;inset:0; }.map-point{position:absolute;left:50%;display:flex;gap:8px;align-items:center;transform:translateX(-6px);}.map-point::before{content:"";width:10px;height:10px;border:2px solid var(--gold-bright);border-radius:50%;background:#1a130e;box-shadow:0 0 10px rgba(218,177,108,.6)}.map-point span{font-size:.63rem;text-shadow:0 2px 8px #000;white-space:nowrap}.map-point:nth-child(even) span{order:-1;transform:translateX(-100%)}
+.selected-panel { padding:21px;display:flex;flex-direction:column;align-items:flex-start; }
+.selected-panel img { width:100%;height:38%;min-height:130px;object-fit:cover;border-radius:10px;margin:14px 0 18px; }
+.selected-panel h2 { margin:0;font:500 1.7rem var(--serif); }.selected-panel p{margin:6px 0 17px;color:var(--muted);font-size:.75rem}.selected-panel a{color:var(--sand-light);font-size:.7rem}.selected-panel button{width:100%;height:45px;margin-top:auto;border-radius:7px;background:linear-gradient(145deg,#ddba77,#af7737);color:#1b1008;font-weight:600;cursor:pointer;}
+
+/* Stories */
+.stories-heading { position:relative;top:auto;left:auto;width:min(90vw,1200px);margin:0 auto;padding-top:150px;text-align:center; }
+.stories-heading .eyebrow { justify-content:center; }.stories-heading h1{font-size:clamp(3.6rem,6vw,6rem)}
+.story-filters { width:min(90vw,900px);margin:35px auto 24px;display:flex;justify-content:center;gap:9px;flex-wrap:wrap; }
+.story-filters button { padding:8px 16px;border:1px solid var(--border);border-radius:20px;background:rgba(16,11,8,.58);color:var(--muted);font-size:.68rem;cursor:pointer; }.story-filters button:hover,.story-filters button.is-active{background:var(--gold);color:#17100a;border-color:var(--gold)}
+.story-grid { width:min(90vw,1200px);margin:0 auto 55px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px; }
+.story-card { position:relative;height:360px;overflow:hidden;border:1px solid rgba(255,255,255,.2);border-radius:15px;background:#20150f;cursor:pointer; }.story-card img{width:100%;height:100%;object-fit:cover;transition:transform 600ms var(--ease)}.story-card:hover img{transform:scale(1.06)}.story-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,4,3,.97),transparent 73%)}
+.story-card-content{position:absolute;z-index:1;left:21px;right:21px;bottom:20px}.story-card-content span{color:var(--sand-light);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase}.story-card-content h2{margin:5px 0 6px;font:500 1.35rem var(--serif)}.story-card-content p{margin:0;color:var(--muted);font-size:.68rem}
+.story-dialog { width:min(90vw,800px);padding:0;border:1px solid var(--border);border-radius:16px;background:#15110e;color:var(--cream);box-shadow:0 30px 90px #000; }.story-dialog::backdrop{background:rgba(4,3,2,.76);backdrop-filter:blur(8px)}.story-dialog img{width:100%;height:330px;object-fit:cover}.story-dialog>div{padding:28px}.story-dialog span{color:var(--sand-light);font-size:.63rem;letter-spacing:.12em;text-transform:uppercase}.story-dialog h2{margin:8px 0;font:500 2.2rem var(--serif)}.story-dialog p{color:var(--cream-dim);line-height:1.7}.story-author{font-size:.72rem}.dialog-close{position:absolute;z-index:2;right:14px;top:14px;width:38px;height:38px;border-radius:50%;background:rgba(10,8,6,.75);font-size:1.4rem;cursor:pointer}
+
+/* Passport */
+.passport-book { width:min(90vw,1180px);min-height:650px;margin:0 auto;padding-top:145px;display:grid;grid-template-columns:.72fr 1.4fr;filter:drop-shadow(0 28px 55px rgba(0,0,0,.45)); }
+.passport-cover { position:relative;padding:55px 48px;border-radius:18px 0 0 18px;background:linear-gradient(145deg,rgba(199,147,78,.2),transparent),#28170e;border:1px solid rgba(223,184,116,.34);overflow:hidden }.passport-cover::after{content:"";position:absolute;inset:18px;border:1px solid rgba(223,184,116,.22);border-radius:9px;pointer-events:none}.passport-cover img{position:relative;z-index:1;width:180px}.passport-cover>p{position:relative;z-index:1;margin:55px 0 9px;color:var(--sand-light);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase}.passport-cover h1{position:relative;z-index:1;margin:0;font:500 4.4rem/.87 var(--serif);letter-spacing:-.05em}.passport-cover h1 em{color:var(--sand-light);font-weight:500}.passport-progress{position:absolute;z-index:1;left:48px;right:48px;bottom:52px;display:flex;justify-content:space-between;align-items:end;border-top:1px solid rgba(223,184,116,.26);padding-top:18px}.passport-progress span{color:var(--muted);font-size:.68rem}.passport-progress strong{font:500 1.3rem var(--serif)}.passport-progress b{color:var(--sand-light)}
+.passport-page-inner { padding:42px 46px;border:1px solid rgba(96,65,39,.25);border-radius:0 18px 18px 0;background:#e7dcc5;color:#312419;background-image:radial-gradient(circle at 20% 20%,rgba(120,77,37,.06) 0 1px,transparent 1.5px);background-size:15px 15px}.passport-page-heading{display:flex;justify-content:space-between;border-bottom:1px solid rgba(68,45,27,.19);padding-bottom:17px}.passport-page-heading span{font-size:.58rem;letter-spacing:.17em;text-transform:uppercase;color:#8c6a4b}.passport-page-heading h2{margin:3px 0 0;font:600 1.7rem var(--serif)}.passport-page-heading p{font-size:.64rem;color:#876a50}.stamp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px}.stamp{position:relative;min-height:165px;padding:17px 11px;border:2px dashed rgba(89,57,33,.32);border-radius:50% 44% 47% 45%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(-3deg)}.stamp:nth-child(even){transform:rotate(4deg)}.stamp.is-locked{filter:grayscale(1);opacity:.48}.stamp-mark{font:600 2.2rem var(--serif);color:#925233}.stamp h3{margin:5px 0 1px;font:.75rem var(--sans);text-transform:uppercase}.stamp p{margin:0;font-size:.55rem;letter-spacing:.12em}.stamp button{margin-top:8px;padding:5px 8px;border:1px solid rgba(73,45,26,.4);border-radius:12px;background:transparent;color:inherit;font-size:.52rem;cursor:pointer}.verification-note{margin:24px 0 0;color:#886d57;font-size:.6rem;line-height:1.5}
+
+/* About */
+.about-content { position:absolute;top:18vh;left:9vw;width:min(620px,45vw); }.about-content h1{margin:20px 0;font:500 clamp(5rem,8vw,8.2rem)/.84 var(--serif);letter-spacing:-.06em}.about-content h1 em{color:var(--sand-light);font-weight:500}.about-content>p:not(.eyebrow){max-width:540px;color:rgba(255,255,255,.7);line-height:1.8}.about-values{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:33px}.about-values article{padding:18px;border-top:1px solid rgba(220,180,111,.42);background:rgba(15,10,8,.42)}.about-values b{color:var(--sand-light);font-size:.58rem}.about-values h2{margin:8px 0 4px;font:500 1.25rem var(--serif)}.about-values p{margin:0;color:var(--muted);font-size:.64rem;line-height:1.5}.about-cta{display:inline-flex;margin-top:25px;padding:13px 20px;border-radius:23px;background:var(--gold);color:#1b1108;font-size:.72rem;font-weight:600}
+
+@media(max-width:950px){.portal-main{min-height:1000px}.planner-workspace{position:relative;top:auto;bottom:auto;left:auto;right:auto;width:90vw;margin:270px auto 45px;grid-template-columns:1fr 1fr}.selected-panel{grid-column:span 2}.story-grid{grid-template-columns:1fr 1fr}.passport-book{grid-template-columns:1fr;padding-bottom:45px}.passport-cover{min-height:510px;border-radius:18px 18px 0 0}.passport-page-inner{border-radius:0 0 18px 18px}.about-content{width:80vw}}
+@media(max-width:620px){.portal-main{overflow-y:auto}.portal-heading{top:115px}.planner-workspace{grid-template-columns:1fr;margin-top:250px}.selected-panel{grid-column:auto}.route-map{height:420px}.story-grid{grid-template-columns:1fr}.stories-heading{top:auto;padding-top:175px;padding-bottom:20px}.story-filters{margin-top:0}.story-card{height:330px}.passport-book{width:94vw;padding-top:110px}.passport-cover{padding:45px 35px}.passport-page-inner{padding:30px 20px}.stamp-grid{grid-template-columns:repeat(2,1fr)}.about-content{position:relative;top:auto;left:auto;width:88vw;margin:0 auto;padding-top:145px}.about-content h1{font-size:clamp(4.2rem,22vw,6.5rem)}.about-values{grid-template-columns:1fr}.about-page .portal-main{min-height:1050px}}
+
+@media(max-width:620px){
+  .story-filters button{min-height:42px;padding-inline:15px;touch-action:manipulation}
+  .story-card{touch-action:manipulation}
+  .story-dialog{width:calc(100vw - 20px);max-height:calc(100dvh - 20px);overflow:auto}
+  .story-dialog img{height:220px}
+  .story-dialog>div{padding:22px 20px calc(24px + env(safe-area-inset-bottom))}
+  .story-dialog h2{font-size:1.8rem}
+  .about-cta{min-height:46px;align-items:center}
+}
+@media(max-width:380px){
+  .stories-heading{width:92vw}
+  .stories-heading h1{font-size:3.25rem}
+  .story-grid{width:92vw}
+  .story-card{height:310px}
+  .about-content{width:90vw}
+  .about-content h1{font-size:4rem}
+}
+
+@media (min-width:621px) {
+  html[dir="rtl"] .portal-heading { left:auto; right:5vw; }
+  html[dir="rtl"] .about-content { left:auto; right:9vw; }
+}
+html[dir="rtl"] .dialog-close { right:auto; left:14px; }
+html[dir="rtl"] .selected-panel { align-items:flex-start; }

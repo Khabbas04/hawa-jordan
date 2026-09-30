@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="js/language-init.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Manage your Hawa Jordan profile, password, profile photo, travel preferences and adventure statistics.">
+  <meta name="theme-color" content="#120c08">
+  <title>My Profile — Hawa Jordan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/profile.css">
+</head>
+<body class="page-profile" data-page="profile">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main-content" class="profile-main">
+    <div class="profile-backdrop" aria-hidden="true"></div>
+    <div class="profile-shade" aria-hidden="true"></div>
+
+    <div class="profile-shell">
+      <!-- Breadcrumb / Back link -->
+      <nav class="profile-breadcrumb" aria-label="Breadcrumb">
+        <a href="/" class="profile-back-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+          <span>Home</span>
+        </a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="breadcrumb-current">My Profile</span>
+      </nav>
+
+      <!-- Profile Hero Card -->
+      <section class="profile-hero-card profile-glass" aria-labelledby="profile-display-name">
+        <div class="profile-hero-top">
+          <div class="profile-avatar-wrap">
+            <div class="profile-avatar-box" id="profile-avatar-box">
+              <span class="profile-avatar-initial" id="avatar-initial">T</span>
+              <img class="profile-avatar-img" id="avatar-img" src="" alt="Profile avatar" hidden>
+              <div class="avatar-loading-overlay" id="avatar-loading" hidden>
+                <div class="spinner"></div>
+              </div>
+            </div>
+            <button class="avatar-edit-badge" id="open-avatar-picker" type="button" aria-label="Change profile photo" title="Change photo">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="profile-hero-info">
+            <div class="profile-title-row">
+              <h1 id="profile-display-name">Traveler</h1>
+              <span class="traveler-level-badge" id="traveler-badge">✦ Jordan Explorer</span>
+            </div>
+            <p class="profile-meta-row">
+              <span class="profile-email-text" id="profile-email">traveler@hawa.jo</span>
+              <span class="meta-dot">•</span>
+              <span class="auth-provider-chip" id="auth-provider-chip">Email & Password</span>
+            </p>
+            <p class="profile-bio-text" id="profile-bio-display">Exploring Jordan through feelings, heritage, and landscapes.</p>
+          </div>
+        </div>
+
+        <!-- Quick Travel Stats -->
+        <div class="profile-stats-bar" aria-label="Travel statistics">
+          <a href="passport" class="profile-stat-item" title="View your passport stamps">
+            <span class="stat-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+            </span>
+            <div class="stat-data">
+              <strong id="stat-stamps">0 / 12</strong>
+              <span>Passport Stamps</span>
+            </div>
+          </a>
+          <div class="profile-stat-item">
+            <span class="stat-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24M14.83 9.17l4.24-4.24M14.83 14.83l4.24 4.24M9.17 14.83l-4.24 4.24"/></svg>
+            </span>
+            <div class="stat-data">
+              <strong id="stat-360">0</strong>
+              <span>360° Completed</span>
+            </div>
+          </div>
+          <a href="now" class="profile-stat-item" title="View saved places">
+            <span class="stat-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </span>
+            <div class="stat-data">
+              <strong id="stat-favs">0</strong>
+              <span>Saved Places</span>
+            </div>
+          </a>
+          <a href="planner" class="profile-stat-item" title="View trip planner">
+            <span class="stat-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            </span>
+            <div class="stat-data">
+              <strong id="stat-trip">0 Stops</strong>
+              <span>Active Journey</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Profile Tabs Section -->
+      <div class="profile-tabs-wrapper">
+        <div class="profile-tabs" role="tablist" aria-label="Profile navigation">
+          <button class="profile-tab is-active" id="tab-btn-personal" role="tab" aria-selected="true" aria-controls="panel-personal" data-tab="personal">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Personal Information</span>
+          </button>
+          <button class="profile-tab" id="tab-btn-security" role="tab" aria-selected="false" aria-controls="panel-security" data-tab="security">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>Security & Password</span>
+          </button>
+          <button class="profile-tab" id="tab-btn-preferences" role="tab" aria-selected="false" aria-controls="panel-preferences" data-tab="preferences">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span>Travel Preferences</span>
+          </button>
+        </div>
+
+        <!-- Tab 1: Personal Info Panel -->
+        <section class="profile-panel profile-glass" id="panel-personal" role="tabpanel" aria-labelledby="tab-btn-personal">
+          <div class="panel-header">
+            <h2>Personal Information</h2>
+            <p>Update your public traveler name, contact details and personal journey bio.</p>
+          </div>
+
+          <form id="personal-info-form" class="profile-form" novalidate>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="input-fullname">Full Name / Display Name</label>
+                <div class="input-shell">
+                  <span class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </span>
+                  <input type="text" id="input-fullname" name="fullName" placeholder="Your traveler name" required maxlength="60">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="input-email">Email Address</label>
+                <div class="input-shell is-readonly">
+                  <span class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  </span>
+                  <input type="email" id="input-email" name="email" placeholder="name@example.com" readonly>
+                  <span class="input-badge" id="email-lock-badge">Verified</span>
+                </div>
+                <small class="field-hint">Email is linked to your authentication account.</small>
+              </div>
+
+              <div class="form-group">
+                <label for="input-phone">Phone Number (Optional)</label>
+                <div class="input-shell">
+                  <span class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  </span>
+                  <input type="tel" id="input-phone" name="phone" placeholder="+962 7 9XXX XXXX">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="input-country">Home Country / City</label>
+                <div class="input-shell">
+                  <span class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </span>
+                  <input type="text" id="input-country" name="country" placeholder="e.g. Jordan, Amman">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="input-bio">About You / Traveler Bio</label>
+              <textarea id="input-bio" name="bio" rows="3" placeholder="Share a few words about your travel passions, favorite Jordan spots or style of exploration..." maxlength="280"></textarea>
+              <span class="char-count"><span id="bio-chars">0</span> / 280</span>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="profile-submit-btn" id="save-info-btn">
+                <span class="btn-text">Save Changes</span>
+                <span class="btn-spinner" hidden></span>
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Tab 2: Security & Password Panel -->
+        <section class="profile-panel profile-glass" id="panel-security" role="tabpanel" aria-labelledby="tab-btn-security" hidden>
+          <div class="panel-header">
+            <h2>Security & Password</h2>
+            <p>Ensure your account remains safe. Choose a strong, memorable password.</p>
+          </div>
+
+          <!-- Notice for Google or passwordless accounts -->
+          <div class="security-provider-banner" id="security-provider-banner" hidden>
+            <div class="banner-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <strong>Social Authentication Active</strong>
+              <p id="security-provider-desc">You are signed in via Google. Your password is securely managed by your identity provider.</p>
+            </div>
+          </div>
+
+          <form id="password-form" class="profile-form" novalidate>
+            <div class="form-grid">
+              <div class="form-group full-width" id="current-password-group">
+                <label for="input-current-password">Current Password</label>
+                <div class="input-shell">
+                  <span class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  </span>
+                  <input type="password" id="input-current-password" name="currentPassword" placeholder="Enter current password" autocomplete="current-password">
+                  <button type="button" class="password-toggle-btn" data-toggle-for="input-current-password" aria-label="Show password">👁</button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="input-new-password">New Password</label>
+                <div class="input-shell">
+                  <span class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15.5 8.5 2 2a3 3 0 0 1 0 4.2l-6 6a3 3 0 0 1-4.2 0l-2-2a3 3 0 0 1 0-4.2l6-6a3 3 0 0 1 4.2 0Z"/><path d="m18 11 2 2"/></svg>
+                  </span>
+                  <input type="password" id="input-new-password" name="newPassword" placeholder="At least 6 characters" autocomplete="new-password" minlength="6" required>
+                  <button type="button" class="password-toggle-btn" data-toggle-for="input-new-password" aria-label="Show password">👁</button>
+                </div>
+                <!-- Password Strength Bar -->
+                <div class="password-strength-wrap" id="password-strength-wrap" hidden>
+                  <div class="strength-meter"><span class="strength-bar" id="strength-bar"></span></div>
+                  <small class="strength-label" id="strength-label">Password strength</small>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="input-confirm-password">Confirm New Password</label>
+                <div class="input-shell">
+                  <span class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  </span>
+                  <input type="password" id="input-confirm-password" name="confirmPassword" placeholder="Re-type new password" autocomplete="new-password" required>
+                  <button type="button" class="password-toggle-btn" data-toggle-for="input-confirm-password" aria-label="Show password">👁</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="profile-submit-btn" id="update-password-btn">
+                <span class="btn-text">Update Password</span>
+                <span class="btn-spinner" hidden></span>
+              </button>
+              <button type="button" class="profile-outline-btn" id="send-reset-email-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                <span>Send Password Reset Email</span>
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Tab 3: Travel Preferences Panel -->
+        <section class="profile-panel profile-glass" id="panel-preferences" role="tabpanel" aria-labelledby="tab-btn-preferences" hidden>
+          <div class="panel-header">
+            <h2>Travel Preferences</h2>
+            <p>Customize your exploration interests and local account settings.</p>
+          </div>
+
+          <div class="preferences-section">
+            <h3>Preferred Exploration Styles</h3>
+            <p class="section-sub">Select the themes you enjoy most to enrich your personalized recommendations.</p>
+            <div class="interest-chips-grid" id="interest-chips">
+              <button type="button" class="interest-chip" data-interest="history">
+                <span class="chip-icon">🏛️</span>
+                <span>Ancient Heritage</span>
+              </button>
+              <button type="button" class="interest-chip" data-interest="nature">
+                <span class="chip-icon">🌿</span>
+                <span>Nature & Wildlife</span>
+              </button>
+              <button type="button" class="interest-chip" data-interest="adventure">
+                <span class="chip-icon">🏜️</span>
+                <span>Desert Adventure</span>
+              </button>
+              <button type="button" class="interest-chip" data-interest="wellness">
+                <span class="chip-icon">🌊</span>
+                <span>Dead Sea & Wellness</span>
+              </button>
+              <button type="button" class="interest-chip" data-interest="food">
+                <span class="chip-icon">🍲</span>
+                <span>Jordanian Food & Culture</span>
+              </button>
+              <button type="button" class="interest-chip" data-interest="stargazing">
+                <span class="chip-icon">✨</span>
+                <span>Night Stargazing</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="preferences-divider"></div>
+
+          <div class="danger-zone">
+            <h3>Account & Device Data</h3>
+            <p class="section-sub">Manage saved offline trips and device data.</p>
+            <div class="danger-actions-row">
+              <button type="button" class="danger-btn" id="btn-clear-local-data">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                <span>Reset Local Journey Data</span>
+              </button>
+              <button type="button" class="signout-large-btn" data-auth-action="signout">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                <span>Sign Out</span>
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Avatar Selection & Upload Dialog -->
+  <dialog class="profile-dialog" id="avatar-dialog" aria-labelledby="avatar-dialog-title">
+    <button class="dialog-close-btn" id="close-avatar-dialog" type="button" aria-label="Close dialog">×</button>
+    <div class="dialog-header">
+      <p class="dialog-kicker">PROFILE PICTURE</p>
+      <h2 id="avatar-dialog-title">Change Profile Photo</h2>
+      <p class="dialog-desc">Upload your own photo or choose a curated Jordan traveler character.</p>
+    </div>
+
+    <!-- Upload from device box -->
+    <div class="avatar-upload-zone" id="avatar-upload-zone">
+      <input type="file" id="avatar-file-input" accept="image/png, image/jpeg, image/webp" hidden>
+      <div class="upload-zone-content">
+        <div class="upload-icon-circle">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <strong>Upload a photo from your device</strong>
+        <span>Drag & drop or tap to browse (PNG, JPG, WebP)</span>
+        <button type="button" class="upload-browse-btn" id="browse-photo-btn">Browse files</button>
+      </div>
+    </div>
+
+    <!-- Preset Avatars -->
+    <div class="dialog-presets-section">
+      <h3>Or choose an explorer avatar:</h3>
+      <div class="preset-avatar-grid" id="preset-avatar-grid">
+        <button type="button" class="preset-avatar-btn" data-preset="petra" title="Petra Explorer">
+          <img src="assets/images/history-jerash.jpg" alt="Petra Explorer">
+          <span>Explorer</span>
+        </button>
+        <button type="button" class="preset-avatar-btn" data-preset="desert" title="Wadi Rum Nomad">
+          <img src="assets/images/desert-wadi-rum.jpg" alt="Wadi Rum Nomad">
+          <span>Bedouin</span>
+        </button>
+        <button type="button" class="preset-avatar-btn" data-preset="waters" title="Dead Sea Traveler">
+          <img src="assets/images/dead-sea-sunset.jpg" alt="Dead Sea Traveler">
+          <span>Wellness</span>
+        </button>
+        <button type="button" class="preset-avatar-btn" data-preset="nature" title="Ajloun Ranger">
+          <img src="assets/images/nature-ajloun.jpg" alt="Ajloun Ranger">
+          <span>Trailblazer</span>
+        </button>
+        <button type="button" class="preset-avatar-btn" data-preset="canyon" title="Wadi Mujib Adventurer">
+          <img src="assets/images/waters-wadi-mujib.jpg" alt="Wadi Mujib Adventurer">
+          <span>Adventurer</span>
+        </button>
+        <button type="button" class="preset-avatar-btn" data-preset="food" title="Cultural Storyteller">
+          <img src="assets/images/food-jordanian-table.jpg" alt="Cultural Storyteller">
+          <span>Cultural</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="dialog-footer">
+      <button type="button" class="remove-photo-btn" id="remove-photo-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        <span>Reset to Initials</span>
+      </button>
+      <button type="button" class="dialog-done-btn" id="done-avatar-btn">Done</button>
+    </div>
+  </dialog>
+
+  <!-- Confirmation Dialog for Data Reset -->
+  <dialog class="profile-dialog confirm-dialog" id="confirm-reset-dialog">
+    <div class="dialog-header">
+      <h2 style="color: #ff9e80;">Reset Local Journey Data?</h2>
+      <p class="dialog-desc">This will clear offline passport stamps and active itineraries stored on this browser. It will not delete your account.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="profile-outline-btn" id="cancel-reset-btn">Cancel</button>
+      <button type="button" class="danger-btn" id="confirm-reset-btn">Yes, Reset Data</button>
+    </div>
+  </dialog>
+
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+  <script type="module" src="js/navigation.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/profile.js"></script>
+</body>
+</html>

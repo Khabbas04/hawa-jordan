@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="js/language-init.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Discover a Jordan destination with Hawa Jordan.">
+  <meta name="theme-color" content="#17100c">
+  <title>Destination — Hawa Jordan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/destination.css">
+</head>
+<body class="page-destination" data-page="explore">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header id="site-header" class="site-header" aria-label="Primary navigation"></header>
+  <main id="main-content" class="destination-main">
+    <div class="destination-backdrop" id="destination-backdrop" aria-hidden="true"></div>
+    <div class="destination-vignette" aria-hidden="true"></div>
+
+    <section class="destination-copy">
+      <p class="breadcrumb"><a href="explore">Explore</a><span>›</span><span id="breadcrumb-category">History</span></p>
+      <h1 id="destination-title">Petra</h1>
+      <p class="destination-subtitle" id="destination-subtitle">The Rose-Red City</p>
+      <div class="destination-meta">
+        <span class="rating"><b>★</b> <span id="destination-rating">4.8</span></span>
+        <span class="meta-divider"></span>
+        <span id="destination-location">Ma'an, Jordan</span>
+      </div>
+      <div class="destination-tags" id="destination-tags"></div>
+      <p class="destination-description" id="destination-description"></p>
+      <div class="destination-actions">
+        <button class="experience-button" id="experience-button" type="button"><span class="play-icon">360°</span><span>Look Around</span></button>
+        <button class="trip-button" id="trip-button" type="button"><span>＋</span><span>Add to Trip</span></button>
+      </div>
+    </section>
+
+    <aside class="media-rail" aria-label="Destination media" id="media-rail"></aside>
+
+    <nav class="destination-tabs" aria-label="Destination information">
+      <button class="is-active" type="button" data-tab="overview">Overview</button>
+      <button type="button" data-tab="experiences">Things to do</button>
+      <button type="button" data-tab="tips">Tips</button>
+    </nav>
+
+    <section class="destination-drawer" id="destination-drawer" hidden aria-live="polite">
+      <button class="drawer-close" id="close-destination-drawer" type="button" aria-label="Close details">×</button>
+      <p id="drawer-kicker">DISCOVER MORE</p>
+      <h2 id="drawer-title"></h2>
+      <div id="drawer-content"></div>
+    </section>
+
+    <div class="sensory-overlay" id="sensory-overlay" hidden>
+      <span class="sensory-pulse"></span>
+      <p id="sensory-label">Visual sensory mode</p>
+      <span class="sensory-caption">Immersive visuals and generative ambient sound</span>
+      <button type="button" id="stop-experience">Stop experience</button>
+    </div>
+  </main>
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="js/navigation.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/destination.js"></script>
+</body>
+</html>

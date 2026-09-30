@@ -1,0 +1,63 @@
+[build]
+  publish = "."
+
+# Clean URL Routing for Hawa Jordan pages
+[[redirects]]
+  from = "/explore"
+  to = "/explore.html"
+  status = 200
+
+[[redirects]]
+  from = "/destination"
+  to = "/destination.html"
+  status = 200
+
+[[redirects]]
+  from = "/experience360"
+  to = "/experience360.html"
+  status = 200
+
+[[redirects]]
+  from = "/planner"
+  to = "/planner.html"
+  status = 200
+
+[[redirects]]
+  from = "/now"
+  to = "/now.html"
+  status = 200
+
+[[redirects]]
+  from = "/journey"
+  to = "/journey.html"
+  status = 200
+
+[[redirects]]
+  from = "/passport"
+  to = "/passport.html"
+  status = 200
+
+[[redirects]]
+  from = "/stories"
+  to = "/stories.html"
+  status = 200
+
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/login"
+  to = "/login.html"
+  status = 200
+
+[[redirects]]
+  from = "/register"
+  to = "/register.html"
+  status = 200
+
+[[redirects]]
+  from = "/profile"
+  to = "/profile.html"
+  status = 200
